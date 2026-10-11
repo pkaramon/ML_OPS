@@ -12,6 +12,7 @@ dependencies = [
     "pre-commit>=4.6.2",
     "pydantic-settings>=2.15.0",
     "python-dotenv>=1.2.4",
+    "pyyaml>=6.0.3",
 ]
 
 [project.scripts]
