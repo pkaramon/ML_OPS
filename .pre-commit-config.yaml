@@ -10,3 +10,12 @@ repos:
      hooks:
      - id: xenon
        args: ['--max-absolute=B', '--max-modules=B', '--max-average=A']
+
+   - repo: local
+     hooks:
+     - id: mypy-hw01
+       name: mypy (hw01)
+       entry: bash -c 'cd hw01 && uv run mypy .'
+       language: system
+       files: ^hw01/.*\.py$
+       pass_filenames: false
