@@ -221,3 +221,6 @@ __marimo__/
 
 # Course-specific
 hw01/model/
+
+# macOS
+.DS_Store
