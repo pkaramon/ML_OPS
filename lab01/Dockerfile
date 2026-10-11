@@ -12,15 +12,17 @@ ENV UV_COMPILE_BYTECODE=1
 # Use copy mode instead of hardlinks when using cache mounts
 ENV UV_LINK_MODE=copy
 
+# Exclude development dependencies, at build time and in `uv run` at startup
+ENV UV_NO_DEV=1
+
 # Install dependencies first (separate layer for better caching)
 # --mount=type=cache: reuses downloaded packages between builds
 # --mount=type=bind: temporarily mounts files without copying them
 # --no-install-project: First installs only dependencies, then the project
-# --no-dev: Excludes development dependencies from production image
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --frozen --no-install-project --no-dev
+    uv sync --frozen --no-install-project
 
 # Copy the rest of the application code
 ADD . /app
