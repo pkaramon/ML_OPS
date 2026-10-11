@@ -10,20 +10,12 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.143.0",
     "joblib>=1.6.0",
-    "pandas>=3.0.6",
     "pydantic-settings>=2.15.0",
     "python-dotenv>=1.2.4",
     "pyyaml>=6.0.3",
     "scikit-learn>=1.9.1",
     "uvicorn>=0.54.0",
 ]
-
-[project.scripts]
-ml-ops = "ml_ops:main"
-
-[build-system]
-requires = ["uv_build>=0.12.23,<0.13.0"]
-build-backend = "uv_build"
 
 [dependency-groups]
 dev = [

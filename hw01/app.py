@@ -27,7 +27,7 @@ app = FastAPI(lifespan=lifespan)
 
 @app.post("/predict")
 def predict(
-    request: PredictRequest,
+    body: PredictRequest,
     predictor: Annotated[Predictor, Depends(get_predictor)],
 ) -> PredictResponse:
-    return PredictResponse(prediction=predictor.predict(request.text))
+    return PredictResponse(prediction=predictor.predict(body.text))

@@ -1,25 +1,22 @@
 from pathlib import Path
 
 import joblib
+from cleantext import clean
 from sentence_transformers import SentenceTransformer
 from sklearn.linear_model import LogisticRegression
 
-CLASSIFIER_PATH = Path("./model/classifier.joblib")
-TRANSFORMER_PATH = Path("./model/sentence_transformer.model")
+MODEL_DIR = Path(__file__).parent / "model"
+CLASSIFIER_PATH = MODEL_DIR / "classifier.joblib"
+TRANSFORMER_PATH = MODEL_DIR / "sentence_transformer.model"
+CLASS_NAMES = ["negative", "neutral", "positive"]
 
 
 def load_classifier() -> LogisticRegression:
-    try:
-        return joblib.load(CLASSIFIER_PATH)
-    except OSError as e:
-        raise ValueError("Could not load the classifier model") from e
+    return joblib.load(CLASSIFIER_PATH)
 
 
 def load_transformer() -> SentenceTransformer:
     return SentenceTransformer(str(TRANSFORMER_PATH))
-
-
-CLASS_NAMES = ["negative", "neutral", "positive"]
 
 
 class Predictor:
@@ -28,6 +25,6 @@ class Predictor:
         self.transformer = load_transformer()
 
     def predict(self, text: str) -> str:
-        embedding = self.transformer.encode(text)
+        embedding = self.transformer.encode(clean(text))
         sentiment_idx = self.classifier.predict([embedding])[0]
         return CLASS_NAMES[int(sentiment_idx)]

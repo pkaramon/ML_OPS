@@ -3,15 +3,11 @@ from sklearn.ensemble import RandomForestClassifier
 
 from constants import MODEL_PATH
 
+CLASS_NAMES = ["setosa", "versicolor", "virginica"]
+
 
 def load_model() -> RandomForestClassifier:
-    try:
-        return joblib.load(MODEL_PATH)
-    except OSError as e:
-        raise ValueError("Couldn't load the trained model") from e
-
-
-CLASS_NAMES = ["setosa", "versicolor", "virginica"]
+    return joblib.load(MODEL_PATH)
 
 
 def predict(model: RandomForestClassifier, data: dict[str, float]) -> str:

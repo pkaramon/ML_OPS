@@ -11,7 +11,7 @@ dependencies = [
     "clean-text>=0.7.1",
     "fastapi>=0.143.0",
     "joblib>=1.6.0",
-    "scikit-learn==1.7.2",
+    "scikit-learn==1.7.2",  # must match the version model/classifier.joblib was pickled with
     "sentence-transformers>=6.1.0",
     "torch>=2.14.1",
     "uvicorn>=0.54.0",

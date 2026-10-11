@@ -8,7 +8,7 @@ services:
       # Syncs code changes without rebuilding the image
       watch:
         # Sync the working directory with /app in container
-        - action: sync
+        - action: sync+restart
           path: .
           target: /app
           # Exclude the virtual environment (platform-specific)

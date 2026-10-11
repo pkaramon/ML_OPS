@@ -15,7 +15,7 @@ repos:
      hooks:
      - id: mypy-hw01
        name: mypy (hw01)
-       entry: bash -c 'cd hw01 && uv run mypy .'
+       entry: uv run --directory hw01 mypy .
        language: system
        files: ^hw01/.*\.py$
        pass_filenames: false

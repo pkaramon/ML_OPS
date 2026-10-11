@@ -11,7 +11,7 @@ app = FastAPI()
 
 @app.get("/")
 def welcome_root():
-    return {"message": "Welcome to the ML HW API"}
+    return {"message": "Welcome to the ML API"}
 
 
 @app.get("/health")
@@ -20,6 +20,6 @@ def health_check():
 
 
 @app.post("/predict")
-def predict(request: PredictRequest) -> PredictResponse:
-    prediction = inference.predict(model, request.model_dump())
+def predict(body: PredictRequest) -> PredictResponse:
+    prediction = inference.predict(model, body.model_dump())
     return PredictResponse(prediction=prediction)
