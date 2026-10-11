@@ -2,4 +2,4 @@
 
 Author: Piotr Karamon
 
-Coursework for MLOps course at AGH UST 2026/2027
+Coursework for MLOps course at AGH UST 2026/2027.
