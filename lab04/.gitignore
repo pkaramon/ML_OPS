@@ -1,0 +1,3 @@
+data/
+milvus_db/*.db
+*.db
