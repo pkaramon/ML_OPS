@@ -1,3 +1,6 @@
 data/
 milvus_db/*.db
 *.db
+homework/abo-images-small
+homework/abo-images-small.tar
+api.key
